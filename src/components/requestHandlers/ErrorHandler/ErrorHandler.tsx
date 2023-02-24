@@ -18,7 +18,7 @@ const ErrorHandler: FC<IErrorHandlerProps> = ({
         isError
           ? 'opacity-100 transition-all duration-300 visible'
           : 'opacity-0 transition-all duration-300 invisible'
-      } fixed w-full h-full  left-0 top-0 flex justify-center items-center bg-black text-white px-[20px]`}
+      } fixed z-10 w-full h-full  left-0 top-0 flex justify-center items-center bg-black text-white px-[20px]`}
     >
       <div className='max-w-[500px] text-center relative w-full mx-auto p-[25px] border-[2px] rounded-[4px]'>
         <p className='text-classic leading-classic font-medium'>{data}</p>

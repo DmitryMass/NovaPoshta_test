@@ -12,7 +12,11 @@ import { app } from '@/styles/app';
 const App: FC = () => {
   return (
     <div className={app.wrapper}>
-      <Link className={app.linkLogo} to={ROUTE.HOME}>
+      <Link
+        className={app.linkLogo}
+        to={'https://novaposhta.ua/'}
+        target={'_blank'}
+      >
         <img src={poshtaLogo} alt='novaPoshta logo' />
       </Link>
       <div className={app.linkBtnWrapper}>
