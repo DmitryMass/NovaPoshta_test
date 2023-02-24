@@ -1,11 +1,11 @@
 import { FC } from 'react';
-//
-import SearchField from '@/components/ttn/searchField/SearchField';
-import useTypedSelector from '@/store/storeHooks/useTypedSelector';
-//
-import historyLogo from '@/assets/icons/historyLogo.svg';
 import { useDispatch } from 'react-redux';
 import useActions from '@/store/storeHooks/useActions';
+import useTypedSelector from '@/store/storeHooks/useTypedSelector';
+//
+import SearchField from '@/components/ttn/searchField/SearchField';
+//
+import historyLogo from '@/assets/icons/historyLogo.svg';
 import { checkTtn } from '@/styles/checkTtn';
 import './checkTtn.scss';
 
@@ -17,8 +17,14 @@ const CheckTtn: FC = () => {
   return (
     <div className={checkTtn.wrapper}>
       <SearchField />
-      <div className={`${checkTtn.historyWrapper}`}>
-        <ul className='history max-h-[200px] relative'>
+      <div
+        className={`${checkTtn.historyWrapper} ${
+          history.length > 0
+            ? 'visible opacity-100 transition-all duration-300'
+            : 'invisible opacity-0 transition-all duration-300'
+        }`}
+      >
+        <ul className={`history max-h-[200px] relative`}>
           <li className='text-white mb-[10px] font-medium text-sm'>
             Історія пошуку
           </li>

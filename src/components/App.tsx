@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ROUTE } from '@/utils/routes';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, NavLink, Route, Routes } from 'react-router-dom';
 //
 import CheckTtn from '@/pages/CheckTtn/CheckTtn';
 import PostOffices from '@/pages/PostOffices/PostOffices';
@@ -20,12 +20,22 @@ const App: FC = () => {
         <img src={poshtaLogo} alt='novaPoshta logo' />
       </Link>
       <div className={app.linkBtnWrapper}>
-        <Link className={app.linkBtn} to={ROUTE.HOME}>
-          Перевірити ТТН
-        </Link>
-        <Link className={app.linkBtn} to={ROUTE.OFFICES}>
-          Список відділень
-        </Link>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? app.linkBtnActive : app.linkBtn
+          }
+          to={ROUTE.HOME}
+        >
+          Перевірити <br className='max-[576px]:block hidden' /> ТТН
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? app.linkBtnActive : app.linkBtn
+          }
+          to={ROUTE.OFFICES}
+        >
+          Список <br className='max-[576px]:block hidden' /> відділень
+        </NavLink>
       </div>
       <Routes>
         <Route path={ROUTE.HOME} element={<CheckTtn />} />

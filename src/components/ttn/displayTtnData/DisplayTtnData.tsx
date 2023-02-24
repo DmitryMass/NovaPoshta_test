@@ -1,18 +1,19 @@
 import { FC } from 'react';
 import useTypedSelector from '@/store/storeHooks/useTypedSelector';
+import { dispayTtnData } from '@/styles/displayTtnData';
 
 const DisplayTtnData: FC = () => {
   const data = useTypedSelector((state) => state.slice.ttnData);
 
   return (
-    <div className='bg-grey p-[20px] min-h-[200px] rounded-[16px] flex items-center mb-[30px]'>
-      {data ? (
-        <div>
+    <>
+      {data?.Number ? (
+        <div className={dispayTtnData.wrapper}>
           <p className='text-greenInput mb-[10px]'>
             Статус доставки: <br />
             <span className='text-white '>{data.Status}</span>
           </p>
-          <p className='text-greenInput mb-[5px]'>
+          <p className='text-greenInput mb-[10px]'>
             Відправлено: <br />
             <span className=' text-white'>{data.WarehouseSender}</span>
           </p>
@@ -22,7 +23,7 @@ const DisplayTtnData: FC = () => {
           </p>
         </div>
       ) : null}
-    </div>
+    </>
   );
 };
 
