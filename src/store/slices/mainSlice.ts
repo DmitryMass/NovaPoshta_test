@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ITtnSuccessData } from './../../types/ttnTypes';
+import { ITtnInfo } from './../../types/ttnTypes';
 
 interface IInitialState {
-  ttnData: ITtnSuccessData | {};
+  ttnData: ITtnInfo | {};
 }
 
 const initialState: IInitialState = {
-  ttnData: {},
+  ttnData: [],
 };
 
 export const mainSlice = createSlice({
   name: 'mainSlice',
   initialState,
   reducers: {
-    setTtnData: (state, action: PayloadAction<ITtnSuccessData>) => {
+    setTtnData: (state, action: PayloadAction<ITtnInfo>) => {
       state.ttnData = action.payload;
     },
   },

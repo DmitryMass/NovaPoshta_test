@@ -1,4 +1,4 @@
-export interface ITtnSuccessData {
+export interface ITtnResponseData {
   success: boolean;
   data: ITtnInfo[] | [];
   errors: any[];
@@ -10,4 +10,20 @@ export interface ITtnInfo {
   WarehouseRecipient: string;
   WarehouseSender: string;
   Status: string;
+}
+
+//
+export interface IRequestBody {
+  apiKey: string;
+  modelName: string;
+  calledMethod: string;
+  methodProperties: IMethodProp;
+}
+
+interface IDoc {
+  DocumentNumber: string;
+}
+
+interface IMethodProp {
+  Documents: IDoc[];
 }

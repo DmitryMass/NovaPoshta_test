@@ -1,3 +1,4 @@
+import { getTtnApi } from './apiQuery/getTtnInfoQuery';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import {
@@ -21,6 +22,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   slice: persistReducer(persistConfig, mainSliceReducer),
+  [getTtnApi.reducerPath]: getTtnApi.reducer,
 });
 
 const store = configureStore({
@@ -30,8 +32,9 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(),
+    }).concat(getTtnApi.middleware),
 });
+
 setupListeners(store.dispatch);
 
 export const persistor = persistStore(store);
