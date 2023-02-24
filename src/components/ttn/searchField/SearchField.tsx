@@ -1,44 +1,23 @@
 import { FC } from 'react';
-import { Formik, Field, FormikHelpers } from 'formik';
-import { IRequestBody } from '@/types/ttnTypes';
-import { useDispatch } from 'react-redux';
-import useActions from '@/store/storeHooks/useActions';
-import { useGetTtnInfoMutation } from '@/store/apiQuery/getTtnInfoQuery';
+import { Formik, Field } from 'formik';
 
-interface IValues {
-  search: string;
-}
+import { useTtnInfo } from '@/customHooks/useTtnInfo';
 
 const SearchField: FC = () => {
-  const { setTtnData } = useActions();
-  const dispatch = useDispatch();
-  const [getTtnInfo, { isLoading }] = useGetTtnInfoMutation();
-
-  const handleSubmit = async (
-    values: IValues,
-    { resetForm }: FormikHelpers<IValues>
-  ) => {
-    const requestBody: IRequestBody = {
-      apiKey: import.meta.env.VITE_API_KEY,
-      modelName: import.meta.env.VITE_TRACKING,
-      calledMethod: import.meta.env.VITE_METHOD,
-      methodProperties: {
-        Documents: [
-          {
-            DocumentNumber: values.search,
-          },
-        ],
-      },
-    };
-    resetForm();
-    const response = await getTtnInfo(requestBody).unwrap();
-    if (response.success) {
-      dispatch(setTtnData(response.data[0]));
-    }
-  };
+  const { handleSubmit, isError, isLoading, setIsError } = useTtnInfo();
 
   return (
-    <div>
+    <div className='relative h-full'>
+      <div
+        className={`${
+          isError
+            ? 'opacity-100 transition-all duration-300 visible'
+            : 'opacity-0 transition-all duration-300 invisible'
+        } absolute w-full h-full flex justify-center items-center bg-black text-white`}
+      >
+        <p>Посилки з такою ТТН не існує. Перевірте корректність вводу.</p>
+        <button onClick={() => setIsError((prev) => !prev)}>X</button>
+      </div>
       <Formik
         initialValues={{ search: '' }}
         onSubmit={handleSubmit}
