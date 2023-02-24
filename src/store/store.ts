@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { mainSliceReducer } from './slices/mainSlice';
 
 const persistConfig = {
   key: 'root',
@@ -19,8 +20,7 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  // slice: persistReducer(persistConfig, someSlice),
-  //   apiReducerpath:apireducer
+  slice: persistReducer(persistConfig, mainSliceReducer),
 });
 
 const store = configureStore({
