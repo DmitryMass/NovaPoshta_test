@@ -15,7 +15,7 @@ const App: FC = () => {
       <Link className={app.linkLogo} to={ROUTE.HOME}>
         <img src={poshtaLogo} alt='novaPoshta logo' />
       </Link>
-      <div className='flex justify-start items-start flex-col gap-[50px] max-w-[230px] w-full '>
+      <div className={app.linkBtnWrapper}>
         <Link className={app.linkBtn} to={ROUTE.HOME}>
           Перевірити ТТН
         </Link>
