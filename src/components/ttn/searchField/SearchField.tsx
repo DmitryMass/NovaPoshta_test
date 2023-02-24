@@ -2,22 +2,18 @@ import { FC } from 'react';
 import { Formik, Field } from 'formik';
 
 import { useTtnInfo } from '@/customHooks/useTtnInfo';
+import ErrorHandler from '@/components/requestHandlers/ErrorHandler/ErrorHandler';
 
 const SearchField: FC = () => {
   const { handleSubmit, isError, isLoading, setIsError } = useTtnInfo();
 
   return (
-    <div className='relative h-full'>
-      <div
-        className={`${
-          isError
-            ? 'opacity-100 transition-all duration-300 visible'
-            : 'opacity-0 transition-all duration-300 invisible'
-        } absolute w-full h-full flex justify-center items-center bg-black text-white`}
-      >
-        <p>Посилки з такою ТТН не існує. Перевірте корректність вводу.</p>
-        <button onClick={() => setIsError((prev) => !prev)}>X</button>
-      </div>
+    <div className='h-full'>
+      <ErrorHandler
+        data='Посилки з такою ТТН не існує. Перевірте корректність вводу.'
+        isError={isError}
+        setIsError={setIsError}
+      />
       <Formik
         initialValues={{ search: '' }}
         onSubmit={handleSubmit}
