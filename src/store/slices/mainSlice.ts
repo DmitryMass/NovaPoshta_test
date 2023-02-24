@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ITtnInfo } from './../../types/ttnTypes';
 
 interface IInitialState {
-  ttnData: ITtnInfo | {};
+  ttnData: ITtnInfo | null;
 }
 
 const initialState: IInitialState = {
-  ttnData: [],
+  ttnData: null,
 };
 
 export const mainSlice = createSlice({
