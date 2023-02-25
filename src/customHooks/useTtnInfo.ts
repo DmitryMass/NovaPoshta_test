@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useGetTtnInfoMutation } from '@/store/apiQuery/getTtnInfoQuery';
 import useActions from '@/store/storeHooks/useActions';
 //
-import { IRequestBody } from '@/types/ttnTypes';
 import { transformTtnBody } from '@/utils/transformRequest';
 
 interface IValues {

@@ -1,44 +1,17 @@
-import { FC, useState } from 'react';
-import { Field, Formik, FormikHelpers } from 'formik';
-import { useDispatch } from 'react-redux';
+import { FC } from 'react';
+import { Field, Formik } from 'formik';
 //
-import { useGetOfficesMutation } from '@/store/apiQuery/getOfficesQuery';
-//
-import { transformRequest } from '@/utils/transformRequest';
 import { postOfficeFormValidation } from '@/utils/validationSchemas';
+import { useGetOffices } from '@/customHooks/useGetOffices';
 //
 import Loader from '@/components/requestHandlers/Loader/Loader';
 import ErrorHandler from '@/components/requestHandlers/ErrorHandler/ErrorHandler';
 //
 import { searchTtn } from '@/styles/searchTtn';
-import useActions from '@/store/storeHooks/useActions';
 import { offices } from '@/styles/offices';
 
-interface IInitialValues {
-  city: string;
-  type: string;
-}
-
 const GetOfficesForm: FC = () => {
-  const [getOffices, { isLoading }] = useGetOfficesMutation();
-  const dispatch = useDispatch();
-  const { setOffices } = useActions();
-  const [isError, setIsError] = useState<boolean>(false);
-
-  const handleGetOffices = async (
-    values: IInitialValues,
-    { resetForm }: FormikHelpers<IInitialValues>
-  ) => {
-    resetForm();
-    const data = transformRequest(values.city.trim(), values.type);
-    const response = await getOffices(data).unwrap();
-    if (response.data.length !== 0) {
-      dispatch(setOffices(response.data));
-      return;
-    }
-    setIsError((prev) => !prev);
-  };
-
+  const { handleGetOffices, isError, isLoading, setIsError } = useGetOffices();
   return (
     <div className='mb-[40px]'>
       <ErrorHandler
