@@ -12,5 +12,5 @@ export default defineConfig({
       overlay: false,
     },
   },
-  base: '/vite-deploy/',
+  base: '/NovaPoshta_test/',
 });
