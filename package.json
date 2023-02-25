@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://DmitryMass.github.io/",
+  "homepage": "https://DmitryMass.github.io/NovaPoshta_test/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
