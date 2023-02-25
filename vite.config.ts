@@ -12,4 +12,5 @@ export default defineConfig({
       overlay: false,
     },
   },
+  base: '/vite-deploy',
 });
