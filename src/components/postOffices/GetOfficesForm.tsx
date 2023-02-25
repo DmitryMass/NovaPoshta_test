@@ -40,7 +40,7 @@ const GetOfficesForm: FC = () => {
                 }
               >
                 <label
-                  className='min-w-[300px] max-[576px]:min-w-auto relative max-[576px]:w-full'
+                  className='min-w-[300px] max-[576px]:min-w-full relative max-[576px]:w-full'
                   htmlFor='search'
                 >
                   {touched.city && errors.city && (
