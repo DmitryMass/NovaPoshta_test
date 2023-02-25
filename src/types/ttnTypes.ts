@@ -13,7 +13,6 @@ export interface ITtnInfo {
   ActualDeliveryDate: string;
   WarehouseSenderAddress: string;
   WarehouseRecipientAddress: string;
-  Number: string;
 }
 
 //
