@@ -11,3 +11,11 @@ export const postOfficeFormValidation = yup.object().shape({
     .required(`Місто обов'язкове поле`),
   type: yup.string().required(`Відділення обов'язкове поле`),
 });
+
+export const searchValidation = yup.object().shape({
+  search: yup
+    .string()
+    .length(14, `Обов'язково повинно бути 14 цифр`)
+    .matches(/^[0-9]*$/gi, 'Тільки цифри')
+    .required(`ТТН обов'язкове поле`),
+});

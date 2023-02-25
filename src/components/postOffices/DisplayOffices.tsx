@@ -3,6 +3,7 @@ import { FC } from 'react';
 import DetailsInfo from './DetailsInfo';
 import { useDisplayOffices } from '@/customHooks/useDisplayOffices';
 import { offices } from '@/styles/offices';
+import './offices.scss';
 
 const DisplayOffices: FC = () => {
   const { data, handleClearOffices, handleVIew, isViewInfo, setIsViewInfo } =
@@ -21,7 +22,11 @@ const DisplayOffices: FC = () => {
           <span className={offices.th}>Місто</span>
           <span className={offices.th}>Відділення</span>
         </div>
-        <div>
+        <div
+          className={`${
+            data?.length! > 3 ? 'h-[250px]' : 'h-[150px]'
+          } offices h-[150px] max-[576px]:h-[200px] overflow-auto`}
+        >
           {data &&
             data.map((item, key) => (
               <div className={offices.infoWrapper} key={key}>

@@ -21,7 +21,7 @@ const CheckTtn: FC = () => {
         className={`${checkTtn.historyWrapper} ${
           history.length > 0
             ? 'visible opacity-100 transition-all duration-300'
-            : 'invisible opacity-0 transition-all duration-300'
+            : 'invisible opacity-0'
         }`}
       >
         <ul className={`history max-h-[200px] relative`}>
@@ -33,7 +33,11 @@ const CheckTtn: FC = () => {
           </li>
           {history.length > 0 ? (
             history.map((item: string) => (
-              <li className='mb-[10px] text-white' key={item}>
+              <li
+                onClick={() => {}}
+                className='mb-[10px] text-white cursor-pointer transition-all duration-75 hover:font-medium hover:text-greenInput'
+                key={item}
+              >
                 {item}
               </li>
             ))

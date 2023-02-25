@@ -8,12 +8,12 @@ export const offices = {
   table: 'max-w-[600px] w-full mx-auto mb-[25px]',
   th: 'text-white font-semibold text-m',
   infoWrapper:
-    'grid grid-cols-3 max-[576px]:grid-cols-1  mb-[5px] max-[576px]:justify-items-center max-[576px]:mb-[20px] max-[576px]:gap-[2px]',
+    'grid grid-cols-3 max-[576px]:grid-cols-1 items-center  mb-[5px] max-[576px]:justify-items-center max-[576px]:mb-[20px] max-[576px]:gap-[2px]',
   info: 'text-white max-[576px]:font-medium text-sm',
   viewBtn:
-    'bg-darkGreen text-darkBlue transition-all duration-300 font-medium hover:bg-greenInput max-w-[80px] w-full rounded-[4px] mt-[5px] row-end-[none] max-[576px]:row-end-auto',
+    'bg-darkGreen text-darkBlue transition-all duration-300 font-medium hover:bg-greenInput max-w-[110px] w-full rounded-[4px] mt-[5px] row-end-[none] max-[576px]:row-end-auto',
   clearBtn:
-    'text-center max-w-[150px] w-full ml-auto  text-white bg-darkBlue block hover:bg-lightBlue transition-all duration-200 rounded-[6px]',
+    'text-center max-w-[150px] w-full ml-auto  text-white bg-darkBlue block hover:bg-lightBlue transition-all duration-200 rounded-[6px] max-[576px]:max-w-full max-[576px]:m-0 py-[5px]',
   detailsWrapper:
     'fixed z-10 w-full h-full  left-0 top-0 flex justify-center items-center bg-black text-white px-[20px]',
   detailsContainer:
