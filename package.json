@@ -14,7 +14,6 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
-    "react-virtuoso": "^4.1.0",
     "redux-persist": "^6.0.0",
     "yup": "^1.0.0"
   },

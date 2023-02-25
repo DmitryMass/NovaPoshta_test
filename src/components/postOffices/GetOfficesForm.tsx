@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { Field, Formik, FormikHelpers } from 'formik';
+import { useDispatch } from 'react-redux';
 //
 import { useGetOfficesMutation } from '@/store/apiQuery/getOfficesQuery';
 //
@@ -11,7 +12,7 @@ import ErrorHandler from '@/components/requestHandlers/ErrorHandler/ErrorHandler
 //
 import { searchTtn } from '@/styles/searchTtn';
 import useActions from '@/store/storeHooks/useActions';
-import { useDispatch } from 'react-redux';
+import { offices } from '@/styles/offices';
 
 interface IInitialValues {
   city: string;
@@ -39,7 +40,7 @@ const GetOfficesForm: FC = () => {
   };
 
   return (
-    <div>
+    <div className='mb-[40px]'>
       <ErrorHandler
         data='Вибачте але в такому місті відділень не існує. Перевірте правильність вводу.'
         isError={isError}
@@ -59,13 +60,18 @@ const GetOfficesForm: FC = () => {
           touched,
         }) => (
           <form onSubmit={handleSubmit}>
-            <div className='flex items-center justify-center gap-[20px]'>
+            <div className={offices.fieldsWrapper}>
               <div
-                className={'flex justify-center gap-[30px]  items-baseline '}
+                className={
+                  'flex justify-center gap-[30px] max-[576px]:flex-col  items-baseline max-[576px]:w-full max-[576px]:items-start '
+                }
               >
-                <label className='min-w-[300px] relative' htmlFor='search'>
+                <label
+                  className='min-w-[300px] relative max-[576px]:w-full'
+                  htmlFor='search'
+                >
                   {touched.city && errors.city && (
-                    <span className='text-hoverRed text-[12px] absolute top-[-10px]'>
+                    <span className={`${offices.fieldError} top-[-10px]`}>
                       {errors.city}
                     </span>
                   )}
@@ -80,16 +86,16 @@ const GetOfficesForm: FC = () => {
                     placeholder='Місто'
                   />
                 </label>
-                <div className='relative self-end '>
+                <div className='relative self-end max-[576px]:self-auto '>
                   {touched.type && errors.type && (
-                    <span className='text-hoverRed text-[12px] absolute top-[-30px]'>
+                    <span className={`${offices.fieldError} top-[-20px]`}>
                       {errors.type}
                     </span>
                   )}
                   <select
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className='border-none text-white rounded-[6px] bg-selectBg cursor-pointer font-medium outline-none'
+                    className={offices.select}
                     name='type'
                     id=''
                     value={values.type}
@@ -106,7 +112,10 @@ const GetOfficesForm: FC = () => {
                   </select>
                 </div>
               </div>
-              <button className={`${searchTtn.sendBtn}`} type='submit'>
+              <button
+                className={`${searchTtn.sendBtn} w-[200px] max-[768px]:w-full`}
+                type='submit'
+              >
                 {isLoading ? <Loader /> : 'Пошук'}
               </button>
             </div>

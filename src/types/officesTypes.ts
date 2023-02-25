@@ -21,6 +21,7 @@ export interface IDataInfo {
   CityDescription: string;
   Description: string;
   Schedule: IWorkTimes;
+  Number: string;
 }
 
 export interface IWorkTimes {
