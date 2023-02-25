@@ -22,7 +22,9 @@ module.exports = {
       spacing: {},
       fontSize: {},
       lineHeight: {},
-      backgroundColor: {},
+      backgroundColor: {
+        selectBg: '#202124',
+      },
       colors: {
         red: '#a4271f',
         hoverRed: '#db291d',
