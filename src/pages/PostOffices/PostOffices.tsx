@@ -4,7 +4,7 @@ import DisplayOffices from '@/components/postOffices/DisplayOffices';
 
 const PostOffices: FC = () => {
   return (
-    <div className='grow'>
+    <div className='grow pb-[70px]'>
       <GetOfficesForm />
       <DisplayOffices />
     </div>
