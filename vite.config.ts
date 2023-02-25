@@ -12,5 +12,4 @@ export default defineConfig({
       overlay: false,
     },
   },
-  base: '/NovaPoshta_test/',
 });
