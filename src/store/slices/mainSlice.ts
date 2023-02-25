@@ -1,14 +1,17 @@
+import { IDataInfo } from '@/types/officesTypes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ITtnInfo } from './../../types/ttnTypes';
 
 interface IInitialState {
   ttnData: ITtnInfo | null;
   history: string[] | [];
+  offices: IDataInfo[] | null;
 }
 
 const initialState: IInitialState = {
   ttnData: null,
   history: [],
+  offices: null,
 };
 
 export const mainSlice = createSlice({
@@ -28,6 +31,12 @@ export const mainSlice = createSlice({
     },
     clearHistory: (state) => {
       state.history = [];
+    },
+    setOffices: (state, action: PayloadAction<IDataInfo[]>) => {
+      state.offices = action.payload;
+    },
+    clearOffices: (state) => {
+      state.offices = null;
     },
   },
 });
