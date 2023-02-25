@@ -2,14 +2,14 @@
 
 Технологіі:
 
-React (hooks / component / router)
-RTK / RTK-Query
-Redux-Persist
-Typescript
-Tailwindcss
-Scss
-Formik/yup
-Netlify deploy
+1. React (hooks / component / router)
+2. RTK / RTK-Query
+3. Redux-Persist
+4. Typescript
+5. Tailwindcss
+6. Scss
+7. Formik/yup
+8. Netlify deploy
 
 ТЗ:
 
