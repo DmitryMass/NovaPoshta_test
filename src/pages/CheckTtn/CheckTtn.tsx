@@ -5,16 +5,17 @@ import useTypedSelector from '@/store/storeHooks/useTypedSelector';
 //
 import SearchField from '@/components/ttn/searchField/SearchField';
 import { useTtnInfo } from '@/customHooks/useTtnInfo';
+import Loader from '@/components/requestHandlers/Loader/Loader';
 //
 import historyLogo from '@/assets/icons/historyLogo.svg';
+import closeLogo from '@/assets/icons/deleteLogo.svg';
 import { checkTtn } from '@/styles/checkTtn';
 import './checkTtn.scss';
-import Loader from '@/components/requestHandlers/Loader/Loader';
 
 const CheckTtn: FC = () => {
   const history = useTypedSelector((state) => state.slice.history);
   const dispatch = useDispatch();
-  const { clearHistory } = useActions();
+  const { clearHistory, removeItemFromHistory } = useActions();
   const { handleHistoryTtn, isLoading } = useTtnInfo();
 
   return (
@@ -42,11 +43,21 @@ const CheckTtn: FC = () => {
           {history.length > 0 ? (
             history.map((item: string) => (
               <li
-                onClick={async () => await handleHistoryTtn(item)}
-                className='mb-[10px] text-white cursor-pointer transition-all duration-75 hover:font-medium hover:text-greenInput'
+                className='mb-[10px] text-white transition-all duration-75 hover:text-greenInput flex justify-center items-center gap-[10px]'
                 key={item}
               >
-                {item}
+                <span
+                  className='cursor-pointer'
+                  onClick={async () => await handleHistoryTtn(item)}
+                >
+                  {item}
+                </span>{' '}
+                <span
+                  onClick={() => dispatch(removeItemFromHistory(item))}
+                  className='w-[13px] h-[13px] block cursor-pointer'
+                >
+                  <img src={closeLogo} alt='remove logo' />
+                </span>
               </li>
             ))
           ) : (

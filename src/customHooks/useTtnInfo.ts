@@ -24,6 +24,10 @@ export const useTtnInfo = () => {
     resetForm();
     const response = await getTtnInfo(requestBody).unwrap();
     if (response.success) {
+      if (response.data[0].Status === 'Номер не найден') {
+        setIsError(true);
+        return;
+      }
       dispatch(setTtnData(response.data[0]));
       dispatch(setHistoryItem(values.search));
       return;

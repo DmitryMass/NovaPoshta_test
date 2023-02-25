@@ -38,6 +38,12 @@ export const mainSlice = createSlice({
     clearOffices: (state) => {
       state.offices = null;
     },
+    removeItemFromHistory: (state, action: PayloadAction<string>) => {
+      state.history = state.history.filter((item) => item !== action.payload);
+    },
+    clearTtnData: (state) => {
+      state.ttnData = null;
+    },
   },
 });
 
