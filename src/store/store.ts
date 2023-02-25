@@ -13,6 +13,7 @@ import {
 } from 'redux-persist';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { mainSliceReducer } from './slices/mainSlice';
+import { getOfficesApi } from './apiQuery/getOfficesQuery';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,7 @@ const persistConfig = {
 const reducers = combineReducers({
   slice: persistReducer(persistConfig, mainSliceReducer),
   [getTtnApi.reducerPath]: getTtnApi.reducer,
+  [getOfficesApi.reducerPath]: getOfficesApi.reducer,
 });
 
 const store = configureStore({
@@ -32,7 +34,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(getTtnApi.middleware),
+    }).concat(getTtnApi.middleware, getOfficesApi.middleware),
 });
 
 setupListeners(store.dispatch);

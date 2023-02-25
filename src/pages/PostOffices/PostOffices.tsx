@@ -1,14 +1,27 @@
 import { FC } from 'react';
 import { transformRequest } from '@/utils/transformRequest';
-import { Field, Formik } from 'formik';
+import { Field, Formik, FormikHelpers } from 'formik';
 import { searchTtn } from '@/styles/searchTtn';
 import Loader from '@/components/requestHandlers/Loader/Loader';
 import { postOfficeFormValidation } from '@/utils/validationSchemas';
+import { useGetOfficesMutation } from '@/store/apiQuery/getOfficesQuery';
+
+interface IInitialValues {
+  city: string;
+  type: string;
+}
 
 const PostOffices: FC = () => {
-  const handleGetOffices = (values: any, { resetForm }: any) => {
-    // const data = transformRequest(values.city, values.type);
-    console.log(values);
+  const [getOffices, { isLoading }] = useGetOfficesMutation();
+
+  const handleGetOffices = async (
+    values: IInitialValues,
+    { resetForm }: FormikHelpers<IInitialValues>
+  ) => {
+    resetForm();
+    const data = transformRequest(values.city.trim(), values.type);
+    const response = await getOffices(data).unwrap();
+    console.log(response);
   };
 
   return (
@@ -75,8 +88,7 @@ const PostOffices: FC = () => {
                 </div>
               </div>
               <button className={`${searchTtn.sendBtn}`} type='submit'>
-                {/* {isLoading ? <Loader /> : 'Статус ТТН'} */}
-                Пошук
+                {isLoading ? <Loader /> : 'Пошук'}
               </button>
             </div>
           </form>
