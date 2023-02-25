@@ -4,7 +4,9 @@ import { IOffices, IOfficesResponse } from '@/types/officesTypes';
 export const getOfficesApi = createApi({
   reducerPath: 'getOfficesApi',
   tagTypes: ['Offices'],
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_API_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://api.novaposhta.ua/v2.0/json/',
+  }),
   endpoints: (build) => ({
     getOffices: build.mutation<IOfficesResponse, IOffices>({
       query: (body) => ({
