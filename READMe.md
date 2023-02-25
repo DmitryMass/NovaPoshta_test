@@ -1,14 +1,16 @@
-Нова пошта тестовий проект.
+Нова пошта Тестовий проект.
 
-Для хранений возможно задействовать redux-persist.
-В планах для запроса redux-toolkit-query, за счет кеширования. Проверить и решить вопрос использования Персиста + квери или одного квери.
+Технологіі:
 
-2 blocks.
+React (hooks / component / router)
+RTK / RTK-Query
+Redux-Persist
+Typescript
+Tailwindcss
+Scss
+Formik/yup
+Netlify deploy
 
-Check TTN block:
-Create Components (field / Status window / History )
-Create an API for requests (TTN information, TTN history), slices for storing and using data.
+ТЗ:
 
-List of offices:
-Create an Api for request (getting list of post offices)
-Create components for display data.
+https://docs.google.com/presentation/d/15oK22tFriVDsx-7xFrPkfdmADFyb-UIuJNQ8Qo8Uw94/edit#slide=id.p
