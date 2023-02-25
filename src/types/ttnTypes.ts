@@ -10,6 +10,10 @@ export interface ITtnInfo {
   WarehouseRecipient: string;
   WarehouseSender: string;
   Status: string;
+  ActualDeliveryDate: string;
+  WarehouseSenderAddress: string;
+  WarehouseRecipientAddress: string;
+  Number: string;
 }
 
 //

@@ -5,6 +5,7 @@ import { useGetTtnInfoMutation } from '@/store/apiQuery/getTtnInfoQuery';
 import useActions from '@/store/storeHooks/useActions';
 //
 import { IRequestBody } from '@/types/ttnTypes';
+import { transformTtnBody } from '@/utils/transformRequest';
 
 interface IValues {
   search: string;
@@ -20,18 +21,7 @@ export const useTtnInfo = () => {
     values: IValues,
     { resetForm }: FormikHelpers<IValues>
   ) => {
-    const requestBody: IRequestBody = {
-      apiKey: import.meta.env.VITE_API_KEY,
-      modelName: import.meta.env.VITE_TRACKING,
-      calledMethod: import.meta.env.VITE_METHOD,
-      methodProperties: {
-        Documents: [
-          {
-            DocumentNumber: values.search,
-          },
-        ],
-      },
-    };
+    const requestBody = transformTtnBody(values.search);
     resetForm();
     const response = await getTtnInfo(requestBody).unwrap();
     if (response.success) {
@@ -42,10 +32,22 @@ export const useTtnInfo = () => {
     setIsError(true);
   };
 
+  const handleHistoryTtn = async (values: string) => {
+    const requestBody = transformTtnBody(values);
+    const response = await getTtnInfo(requestBody).unwrap();
+    if (response.success) {
+      dispatch(setTtnData(response.data[0]));
+      dispatch(setHistoryItem(values));
+      return;
+    }
+    setIsError(true);
+  };
+
   return {
     handleSubmit,
     isError,
     isLoading,
     setIsError,
+    handleHistoryTtn,
   };
 };

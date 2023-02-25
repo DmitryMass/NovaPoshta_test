@@ -9,18 +9,43 @@ const DisplayTtnData: FC = () => {
     <>
       {data?.Number ? (
         <div className={dispayTtnData.wrapper}>
-          <p className='text-greenInput mb-[10px]'>
-            Статус доставки: <br />
-            <span className='text-white '>{data.Status}</span>
-          </p>
-          <p className='text-greenInput mb-[10px]'>
-            Відправлено: <br />
-            <span className=' text-white'>{data.WarehouseSender}</span>
-          </p>
-          <p className='text-greenInput'>
-            Отримано: <br />
-            <span className=' text-white'>{data.WarehouseRecipient}</span>
-          </p>
+          <div className='max-w-[440px] max-[768px]:max-w-full'>
+            <p className='text-greenInput mb-[10px]'>
+              Статус доставки:{' '}
+              <span className='text-white mb-[5px] '>{data.Number}</span>
+              <br />
+              <span className='text-white '>{data.Status}</span>
+            </p>
+            <p className='text-greenInput mb-[10px]'>
+              Орієнтована дата: <br />
+              <span className='text-white '>{data.ActualDeliveryDate}</span>
+            </p>
+
+            <p className='text-greenInput mb-[10px]'>
+              Відправлення:{' '}
+              <br
+                className={`${
+                  data.WarehouseSenderAddress ? 'block' : 'hidden'
+                }`}
+              />
+              <span className='text-white'>{data.WarehouseSenderAddress}</span>
+              <br />
+              <span className=' text-white'>{data.WarehouseSender}</span>
+            </p>
+            <p className='text-greenInput'>
+              Отриманання:{' '}
+              <br
+                className={`${
+                  data.WarehouseRecipientAddress ? 'block' : 'hidden'
+                }`}
+              />
+              <span className='text-white'>
+                {data.WarehouseRecipientAddress}
+              </span>
+              <br />
+              <span className=' text-white'>{data.WarehouseRecipient}</span>
+            </p>
+          </div>
         </div>
       ) : null}
     </>

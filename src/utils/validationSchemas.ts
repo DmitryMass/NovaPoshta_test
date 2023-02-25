@@ -16,6 +16,6 @@ export const searchValidation = yup.object().shape({
   search: yup
     .string()
     .length(14, `Обов'язково повинно бути 14 цифр`)
-    .matches(/^[0-9]*$/gi, 'Тільки цифри')
+    .matches(/^([25])([0-9])*$/gi, 'ТТН починається з 2 або 5. Тільки цифри.')
     .required(`ТТН обов'язкове поле`),
 });
