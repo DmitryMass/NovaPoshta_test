@@ -20,5 +20,7 @@ https://docs.google.com/presentation/d/15oK22tFriVDsx-7xFrPkfdmADFyb-UIuJNQ8Qo8U
 Не вказано часу скільки робити Тестове, немає можливості звязатися з компанією, уточнити виникші питання по тз. Маю змогу зробити повний бекенд, не працював з Nestjs, але працював з MongoDb Nodejs + (Fastify/Express), знаючи скільки часу є на тестове, зміг би спокійно розібратись, для такого завдання. Дуже поспішав зробити. Тому цей пункт пропустив. Ні сроків ні дати, не можливо додати опис до форми відправки, тому пишу в редмі.
 
 ![DESKTOP!](./src/assets/images/ttn.png)
+
 ![DESKTOP!](./src/assets/images/offices.png)
+
 ![DESKTOP!](./src/assets/images/additional.png)
